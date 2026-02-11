@@ -19,11 +19,13 @@ int	main(void)
 	char	*s;
 
 	fd = open("file.txt", O_RDONLY);
-	s = get_next_line(fd);
-	while(s)
+	if (fd < 0)
+		return (-1);
+	while((s = get_next_line(fd))!= NULL)
 	{
 		printf("The next line is:%s", s);
-		s = get_next_line(fd);
+		free(s);
 	}
+	close(fd);
 	return (0);
 }	
