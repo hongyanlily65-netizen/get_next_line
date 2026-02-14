@@ -1,5 +1,0 @@
-Hello GNL line 1
-
-Line 3: 1234567890
-Line 4 has spaces at end    
-Last line 5 (no extra blank line after this)
