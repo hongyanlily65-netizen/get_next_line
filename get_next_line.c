@@ -19,7 +19,7 @@ char	*free_stash(char *stash)
 	i = 0;
 	if (!stash)
 		return (NULL);
-	while (stash[i] != 'a' && stash[i])
+	while (stash[i] != '\n' && stash[i])
 		i++;
 	if (stash[i] == '\0')
 	{
@@ -45,9 +45,9 @@ char	*take_line(char *stash)
 	len = 0;
 	if (!stash)
 		return (NULL);
-	while (stash[len] != 'a' && stash[len])
+	while (stash[len] != '\n' && stash[len])
 		len++;
-	if (stash[len] == 'a')
+	if (stash[len] == '\n')
 		len++;
 	line = malloc(sizeof(char) * (len + 1));
 	if (!line)
@@ -110,7 +110,11 @@ char	*get_next_line(int fd)
 	if (reader_check(fd, &stash, buf) < 0)
 		return (gnl_free(&stash, &buf));
 	free(buf);
+	if (!stash)
+		return (gnl_free(&stash, NULL));
 	line = take_line(stash);
+	if (!line)
+		return (gnl_free(&stash, NULL));
 	stash = free_stash(stash);
 	return (line);
 }

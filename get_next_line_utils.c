@@ -67,7 +67,7 @@ int	has_return(char *stash)
 		return (0);
 	while (stash[i])
 	{
-		if (stash[i] == 'a')
+		if (stash[i] == '\n')
 			return (1);
 		i++;
 	}

@@ -32,14 +32,18 @@
 ### Compilación (ejemplo con main de pruebas)
 ```bash
 cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c main.c -o gnl
+```
 ### Ejecucion
+```bash
 ./gnl file.txt
+```
 ### limpieza
+```bash
 make
 make clean
 make fclean
 make re
-
+```
 ### Recursos
 
 Referencias
